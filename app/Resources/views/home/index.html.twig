@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set navbar_selected = 'home' %}
+{% block body %}
+    <div id="wrapper">
+        {% block navbar %}
+            {% include 'home/navbar.html.twig' with {help: block('help')|default()} %}
+        {% endblock navbar %}
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
