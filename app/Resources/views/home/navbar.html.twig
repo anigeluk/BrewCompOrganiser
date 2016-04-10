@@ -1,3 +1,6 @@
+{% if navbar_selected is not defined %}
+    {% set navbar_selected = '' %}
+{% endif %}
 <nav class="navbar navbar-default navbar-fixed-top screen-only" role="navigation" style="border-radius:0px">
     <div class="container">
         <div class="navbar-header">
@@ -10,32 +13,30 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav" style="margin-left:-15px">
-                {% if is_granted('ROLE_clientservices') %}
-                    <li{% if navbar_selected == 'clientservices' %} class="active"{% endif %}><a href="{{ path('clientservices') }}">Clients</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_campaignmanagement') %}
-                    <li{% if navbar_selected == 'campaigns' %} class="active"{% endif %}><a href="{{ path('campaignmanagement') }}">Campaigns</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_fundraising') %}
-                    <li{% if navbar_selected == 'fundraising' %} class="active"{% endif %}><a href="{{ path('fundraising') }}">Fundraising</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_staff') %}
-                    <li{% if navbar_selected == 'staff' %} class="active"{% endif %}><a href="{{ path('staff') }}">Staff</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_support') %}
-                    <li{% if navbar_selected == 'support' %} class="active"{% endif %}><a href="{{ path('support') }}">Support</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_reporting') %}
-                    <li{% if navbar_selected == 'reporting' %} class="active"{% endif %}><a href="{{ path('reporting') }}">Reporting</a></li>
-                {% endif %}
+                <li{% if navbar_selected == 'home' %} class="active"{% endif %}><a href="{{ path('homepage') }}">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if is_granted('ROLE_admin') %}
-                    <li{% if navbar_selected == 'admin' %} class="active"{% endif %}><a href="{{ path('admin') }}">Admin</a></li>
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li{% if navbar_selected == 'admin' %} class="active"{% endif %}>
+                            Admin
+                        </li>
+                    {% endif %}
+                    <li class="{% if navbar_selected == 'user' %} active{% endif %}">
+                        <a href="{{ path('homepage') }}">{{ app.user.username }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">Log out</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('fos_user_registration_register') }}">Register</a>
+                    </li>  
+                    <li>
+                        <a href="{{ path('fos_user_security_login') }}">Log in</a>
+                    </li>                    
                 {% endif %}
-                <li class="{% if navbar_selected == 'user' %} active{% endif %}">
-                    <a href="{{ path('homepage') }}">{{ app.user.username }}</a>
-                </li>
+                
 
                 {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                     <li><a style="padding:17px 5px 13px 5px" href="{{ path('default', {'_switch_user': '_exit'}) }}" title="Exit impersonation"><i class="glyphicon glyphicon-eye-close"></i></a></li>

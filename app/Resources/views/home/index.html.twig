@@ -1,16 +1,26 @@
 {% extends 'base.html.twig' %}
 {% set navbar_selected = 'home' %}
-{% block body %}
+    {% block sidebar %}
+        {% if competition.logo is not empty %}
+            <div class="logo">
+                <img class="img-responsive" src ="/uploads/{{competition.logo}}"/>
+            </div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">Miscellaneous Reporting</div>
+            <div class="list-group">
+            </div>
+        </div>
+        {% block actions %}
+        {% endblock actions %}
+    {% endblock sidebar %}
+{% block content %}
     <div id="wrapper">
-        {% block navbar %}
-            {% include 'home/navbar.html.twig' with {help: block('help')|default()} %}
-        {% endblock navbar %}
         <div id="container">
             <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
+                <h1>{{ competition.name }}</h1>
+                <p>{{ competition.description | nl2br }}</p>
             </div>
-
-
         </div>
     </div>
-{% endblock %}
+{% endblock content%}

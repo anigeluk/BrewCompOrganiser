@@ -1,0 +1,19 @@
+* {-webkit-font-smoothing: antialiased/*;-webkit-text-stroke: 1px rgba(0,0,0,0.1)*/}
+
+.layout-default{padding-top:60px}
+
+footer{margin-top:40px;padding:20px;overflow:hidden;border-top:1px solid #CCCCCC}
+.data-grid{display:block;height:350px}
+
+.loading{text-align: center;}
+.page-header{margin-top:0;position:relative}
+.page-header h1{margin:0px}
+.page-header .actions{position:absolute;right:0px;top:5px}
+.nav-tabs{margin-bottom:20px}
+.detail-view th{text-align:right;width:160px}
+
+textarea{resize:vertical}
+
+.required:after { color: red;  content:" *"; }
+
+.logo { padding-left:1px; padding-right:1px; }

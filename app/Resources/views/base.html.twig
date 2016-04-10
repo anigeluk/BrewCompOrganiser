@@ -6,6 +6,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
+        <link href="{{ asset('css/body.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
 
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
@@ -13,13 +14,48 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="layout-default env-{{ app.environment }}">
+        {% block navbar %}
+            {% include 'home/navbar.html.twig' with {help: block('help')|default()} %}
+        {% endblock navbar %}
+        <div class="container" style="padding:0px">
+            <div class="row">
+                {% block body %}
+                    <div class="col-md-3 screen-only">
+                        {% block sidebar %}{% endblock sidebar %}
+                    </div>
+                    <div class="col-md-9">
+                    {% block main %}
+                        {% include 'home/flashMessages.html.twig' with { 'close': true } %}
+                        <header class="page-header">
+                            {% block header %}{% endblock %}
+                        </header>
+                        {% block tabs %}{% endblock tabs %}
+                        {% block content %}{% endblock content %}
+                    {% endblock main %}
+                    </div>
+                {% endblock body %}                
+            </div>            
+            <footer>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p class="text-muted">Brew Competition Organiser &copy; All rights reserved.</p>
+                        {% if server.hostname is defined %}
+                            <p class="text-muted">You are connected to <strong>{{ server.hostname }}</strong></p>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-4">
+                        {% if app.environment == 'dev' %}
+                            <div class="alert alert-danger text-center"><strong>DEVELOPMENT ENVIRONMENT</strong></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </footer>
+        </div>
         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
         <script src="{{ asset('js/jquery.js') }}"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
         <script src="{{ asset('js/bootstrap.js') }}"></script>
         {% block javascripts %}{% endblock %}
-
-    </body>
+    </body>    
 </html>

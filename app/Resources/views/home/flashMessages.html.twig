@@ -1,0 +1,10 @@
+{% for flash,messages in app.session.flashbag.all %}
+    {% for message in messages %}
+        <div class="alert alert-{{ flash=='error' ? 'danger' : flash}}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {% autoescape false %}
+                {{ message }}
+            {% endautoescape %}
+        </div>
+    {% endfor %}
+{% endfor %}
