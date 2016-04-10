@@ -17,11 +17,20 @@ class CompetitionType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('logo')
+            ->add('logoUrl')
             ->add('bjcpCompetitionId')
-            ->add('host')
+            ->add('hostName')
             ->add('hostLocation')
             ->add('hostUrl')
+            ->add('registrationOpen')
+            ->add('registrationClose')
+            ->add('entryOpen')
+            ->add('entryClose')
+            ->add('dropOffOpen')
+            ->add('dropOffClose')
+            ->add('shippingOpen')
+            ->add('shippingClose')
+            ->add('lockDown')
         ;
     }
     

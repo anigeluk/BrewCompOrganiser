@@ -18,16 +18,16 @@
                 <td>{{ competition.description }}</td>
             </tr>
             <tr>
-                <th>Logo</th>
-                <td>{{ competition.logo }}</td>
+                <th>Logourl</th>
+                <td>{{ competition.logoUrl }}</td>
             </tr>
             <tr>
                 <th>Bjcpcompetitionid</th>
                 <td>{{ competition.bjcpCompetitionId }}</td>
             </tr>
             <tr>
-                <th>Host</th>
-                <td>{{ competition.host }}</td>
+                <th>Hostname</th>
+                <td>{{ competition.hostName }}</td>
             </tr>
             <tr>
                 <th>Hostlocation</th>
@@ -36,6 +36,42 @@
             <tr>
                 <th>Hosturl</th>
                 <td>{{ competition.hostUrl }}</td>
+            </tr>
+            <tr>
+                <th>Registrationopen</th>
+                <td>{% if competition.registrationOpen %}{{ competition.registrationOpen|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Registrationclose</th>
+                <td>{% if competition.registrationClose %}{{ competition.registrationClose|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Entryopen</th>
+                <td>{% if competition.entryOpen %}{{ competition.entryOpen|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Entryclose</th>
+                <td>{% if competition.entryClose %}{{ competition.entryClose|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dropoffopen</th>
+                <td>{% if competition.dropOffOpen %}{{ competition.dropOffOpen|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dropoffclose</th>
+                <td>{% if competition.dropOffClose %}{{ competition.dropOffClose|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Shippingopen</th>
+                <td>{% if competition.shippingOpen %}{{ competition.shippingOpen|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Shippingclose</th>
+                <td>{% if competition.shippingClose %}{{ competition.shippingClose|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lockdown</th>
+                <td>{% if competition.lockDown %}{{ competition.lockDown|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
