@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% set navbar_selected = 'home' %}
     {% block sidebar %}
-        {% if competition.logo is not empty %}
+        {% if competition.logoUrl is not empty %}
             <div class="logo">
-                <img class="img-responsive" src ="/uploads/{{competition.logo}}"/>
+                <img class="img-responsive" src ="/uploads/{{competition.logoUrl}}"/>
             </div>
         {% endif %}
         <div class="panel panel-default">

@@ -18,9 +18,14 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+
     <script type="text/javascript">
         $(function () {
-            $('#datetimepicker1').datetimepicker();
+            $('#competition_registrationOpen').datetimepicker();
         });
-    </script>            
-{% endblock %}
+    </script>
+{% endblock javascripts %}
+

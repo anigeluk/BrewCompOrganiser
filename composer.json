@@ -31,7 +31,8 @@
         "symfony/assetic-bundle": "^2.8",
         "braincrafted/bootstrap-bundle": "^2.2",
         "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.11.*"
+        "jquery/jquery":  "1.11.*",
+        "eternicode/bootstrap-datepicker": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
