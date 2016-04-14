@@ -5,8 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Form\DataTransformer\DateTimeTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class CompetitionType extends AbstractType
 {
@@ -24,27 +24,97 @@ class CompetitionType extends AbstractType
             ->add('hostName')
             ->add('hostLocation')
             ->add('hostUrl')
-            ->add('registrationOpen', TextType::class, array(
-                'required' => true,
-                'translation_domain' => 'AppBundle',
-                'attr' => array(
-                    'class' => 'form-control input-inline datetimepicker',
-                    'data-provide' => 'datepicker',
-                    'data-format' => 'dd-mm-yyyy HH:ii',
-                ),
-            ))
-            ->add('registrationClose')
-            ->add('entryOpen')
-            ->add('entryClose')
-            ->add('dropOffOpen')
-            ->add('dropOffClose')
-            ->add('shippingOpen')
-            ->add('shippingClose')
-            ->add('lockDown')
+            ->add('registrationOpen', DateTimeType::class , [
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('registrationClose', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('entryOpen', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('entryClose', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('dropOffOpen', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('dropOffClose', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('shippingOpen', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('shippingClose', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
+            ->add('lockDown', DateTimeType::class , [
+    'required' => false,
+    'widget' => 'single_text',
+    'format' => 'YYYY-MM-DD HH:mm',
+    'attr' => [
+        'class' => 'form-control input-inline datepicker',
+        'data-provide' => 'datepicker',
+        'data-date-format' => 'YYYY-MM-DD hh:mm'
+    ]
+])
         ;
 
-         $builder->get('registrationOpen')
-            ->addModelTransformer(new DateTimeTransformer());
     }
     
     /**

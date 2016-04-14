@@ -3,29 +3,80 @@
 {% block body %}
     <h1>Competition edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+    {{ form_start(edit_form, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 9 }) }}
+        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.description) }}
+        {{ form_row(edit_form.logoUrl) }}
+        {{ form_row(edit_form.bjcpCompetitionId) }}
+        {{ form_row(edit_form.hostName) }}
+        {{ form_row(edit_form.hostLocation) }}
+        {{ form_row(edit_form.hostUrl) }}
+        <div class="form-group {{ edit_form.registrationOpen.vars.valid == false or edit_form.registrationClose.vars.valid == false ? 'has-error' : '' }}">
+                {{ form_label(edit_form.registrationOpen) }}
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.registrationOpen) }}
+                    {{ form_errors(edit_form.registrationOpen) }}
+                </div>
+                <label class="control-label col-lg-1" for="competition_registrationClose">{% trans %}Close{% endtrans %}</label>
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.registrationClose) }}
+                    {{ form_errors(edit_form.registrationClose) }}
+                </div>
+        </div> 
+        <div class="form-group {{ edit_form.entryOpen.vars.valid == false or edit_form.entryClose.vars.valid == false ? 'has-error' : '' }}">
+                {{ form_label(edit_form.entryOpen) }}
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.entryOpen) }}
+                    {{ form_errors(edit_form.entryOpen) }}
+                </div>
+                <label class="control-label col-lg-1" for="competition_entryClose">{% trans %}Close{% endtrans %}</label>
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.entryClose) }}
+                    {{ form_errors(edit_form.entryClose) }}
+                </div>
+        </div>  
+        <div class="form-group {{ edit_form.dropOffOpen.vars.valid == false or edit_form.dropOffClose.vars.valid == false ? 'has-error' : '' }}">
+                {{ form_label(edit_form.dropOffOpen) }}
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.dropOffOpen) }}
+                    {{ form_errors(edit_form.dropOffOpen) }}
+                </div>
+                <label class="control-label col-lg-1" for="competition_dropOffClose">{% trans %}Close{% endtrans %}</label>
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.dropOffClose) }}
+                    {{ form_errors(edit_form.dropOffClose) }}
+                </div>
+        </div>  {%dump%}
+        <div class="form-group {{ edit_form.shippingOpen.vars.valid == false or edit_form.shippingClose.vars.valid == false ? 'has-error' : '' }}">
+                {{ form_label(edit_form.shippingOpen) }}
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.shippingOpen) }}
+                    {{ form_errors(edit_form.shippingOpen) }}
+                </div>
+                <label class="control-label col-lg-1" for="competition_shippingClose">{% trans %}Close{% endtrans %}</label>
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.shippingClose) }}
+                    {{ form_errors(edit_form.shippingClose) }}
+                </div>
+        </div>         
+        {{ form_row(edit_form.lockDown) }}
+        {{ form_row(edit_form.registrationClose) }}
+        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.name) }}
+        <input type="submit" value="Save" />
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_competition_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
-{% block javascripts %}
-    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            $('#competition_registrationOpen').datetimepicker();
+    <script>
+        $(document).ready(function() {
+            $('.datepicker' ).datetimepicker();
         });
     </script>
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{  asset('css/bootstrap-datetimepicker.min.css') }}" />
+{% endblock stylesheets %}
+{% block javascripts %}
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
 {% endblock javascripts %}
 

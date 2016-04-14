@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Competition
@@ -72,13 +73,19 @@ class Competition
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime()
+     * 
      * @ORM\Column(name="registrationOpen", type="datetime", nullable=true)
      */
     private $registrationOpen;
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
+     * @Assert\Expression(
+     *     "this.getRegistrationClose() == '' || this.getRegistrationOpen() < this.getRegistrationClose()",
+     *     message="Close time must be after open time!"
+     * )
      *
      * @ORM\Column(name="registrationClose", type="datetime", nullable=true)
      */
@@ -86,6 +93,7 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      *
      * @ORM\Column(name="entryOpen", type="datetime", nullable=true)
      */
@@ -93,6 +101,11 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
+     * @Assert\Expression(
+     *     "this.getEntryClose() == '' || this.getEntryOpen() <= this.getEntryClose()",
+     *     message="Close time must be after open time!"
+     * )
      *
      * @ORM\Column(name="entryClose", type="datetime", nullable=true)
      */
@@ -100,6 +113,7 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      *
      * @ORM\Column(name="dropOffOpen", type="datetime", nullable=true)
      */
@@ -107,6 +121,11 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
+     * @Assert\Expression(
+     *     "this.getDropOffClose() == '' || this.getDropOffOpen() <= this.getDropOffClose()",
+     *     message="Close time must be after open time!"
+     * )
      *
      * @ORM\Column(name="dropOffClose", type="datetime", nullable=true)
      */
@@ -114,6 +133,7 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      *
      * @ORM\Column(name="shippingOpen", type="datetime", nullable=true)
      */
@@ -121,6 +141,11 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
+     * @Assert\Expression(
+     *     "this.getShippingClose() == '' || this.getShippingOpen() <= this.getShippingClose()",
+     *     message="Close time must be after open time!"
+     * )
      *
      * @ORM\Column(name="shippingClose", type="datetime", nullable=true)
      */
@@ -128,6 +153,7 @@ class Competition
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      *
      * @ORM\Column(name="lockDown", type="datetime", nullable=true)
      */
