@@ -17,3 +17,10 @@ textarea{resize:vertical}
 .required:after { color: red;  content:" *"; }
 
 .logo { padding-left:1px; padding-right:1px; }
+
+div.vich-image a img {max-width:250px;}
+
+li.status-closed { background-color: #f2dede; border-color: #ebccd1; font-weight: bold; }
+li.status-closed span { font-weight: normal; font-size: 75% }
+li.status-open { background-color: #dff0d8; border-color: #d6e9c6; font-weight: bold; }
+li.status-open span { font-weight: normal; font-size: 75% }

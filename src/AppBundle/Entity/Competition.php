@@ -602,5 +602,22 @@ class Competition
     {
         return $this->lockDown;
     }
+
+
+    public function isRegistrationOpen(){
+        $now = new \DateTime;
+        if (empty($this->registrationOpen))
+            return false;
+        if ($this->registrationOpen > $now)
+            return false;
+        if (empty($this->registrationClose))
+            return true;
+        if ($this->registrationClose > $now)
+            return true ;
+        return false;
+    }
+
+
+
 }
 

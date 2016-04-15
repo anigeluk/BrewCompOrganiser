@@ -9,7 +9,14 @@
         <div class="panel panel-default">
             <div class="panel-heading">Competition Status</div>
             <div class="list-group">
-                <li class="list-group-item">Account Registration {{ icon('ok') }}</li>
+                <li class="list-group-item {{ competition.isRegistrationOpen ? 'status-open' : 'status-closed'}}">
+                    Account Registration
+                    {% if competition.isRegistrationOpen == false and competition.registrationClose is not empty %}
+                        <br><span>Close{{ competition.isRegistrationOpen ? 's' : 'd' }} {{competition.registrationClose|date('Y-m-d H:i')}}</span>
+                    {% elseif competition.isRegistrationOpen == false and competition.registrationClose is not empty %}
+                        <br><span>Close{{ competition.isRegistrationOpen ? 's' : 'd' }} {{competition.registrationClose|date('Y-m-d H:i')}}</span>
+                    {% endif %}
+                </li>
                 <li class="list-group-item">Add Entries {{ icon('remove') }}</li>
                 <li class="list-group-item">Entry Drop Off {{ icon('ok') }}</li>
                 <li class="list-group-item">Entry Shipping {{ icon('ok') }}</li>
