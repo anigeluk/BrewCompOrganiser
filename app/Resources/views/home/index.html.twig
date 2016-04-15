@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% set navbar_selected = 'home' %}
     {% block sidebar %}
-        {% if competition.logoUrl is not empty %}
+        {% if competition.logoFilename is not empty %}
             <div class="logo">
-                <img class="img-responsive" src ="/uploads/{{competition.logoUrl}}"/>
+                <img class="img-responsive" src="{{ vich_uploader_asset(competition, 'logoFile') }}" alt="{{ competition.name }}" />
             </div>
         {% endif %}
         <div class="panel panel-default">

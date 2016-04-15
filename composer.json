@@ -32,7 +32,9 @@
         "braincrafted/bootstrap-bundle": "^2.2",
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.11.*",
-        "eternicode/bootstrap-datepicker": "^1.6"
+        "eternicode/bootstrap-datepicker": "^1.6",
+        "vich/uploader-bundle": "^1.0",
+        "stof/doctrine-extensions-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

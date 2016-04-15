@@ -36,6 +36,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -96,4 +98,14 @@ braincrafted_bootstrap:
         variables_file: ~
         bootstrap_output: %kernel.root_dir%/Resources/less/bootstrap.less
         bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig  
+vich_uploader:
+    db_driver: orm
+    mappings:
+        logo_file:
+            uri_prefix:         /uploads/logo
+            upload_destination: %kernel.root_dir%/../web/uploads/logo
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
         
