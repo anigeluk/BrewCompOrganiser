@@ -1,41 +1,44 @@
-Close: Close
 'Account Registration': 'Account Registration'
 'Add Entries': 'Add Entries'
+'Add Location': 'Add Location'
+'Bjcp competition id': 'Bjcp competition id'
+'Delete?': 'Delete?'
+'Drop off open': 'Drop off open'
 'Entry Drop Off': 'Entry Drop Off'
 'Entry Shipping': 'Entry Shipping'
-'Lock Down': 'Lock Down'
-Ends: Ends
-Starts: Starts
-Name: Name
-Description: Description
-'Logo file': 'Logo file'
-'Delete?': 'Delete?'
-'Bjcp competition id': 'Bjcp competition id'
-'Host name': 'Host name'
-'Host location': 'Host location'
-'Host url': 'Host url'
-'Registration open': 'Registration open'
 'Entry open': 'Entry open'
-'Drop off open': 'Drop off open'
-'Shipping open': 'Shipping open'
+'Host location': 'Host location'
+'Host name': 'Host name'
+'Host url': 'Host url'
+'Lock Down': 'Lock Down'
 'Lock down': 'Lock down'
+'Log in': 'Log in'
+'Log out': 'Log out'
+'Logo file': 'Logo file'
+'Registration open': 'Registration open'
+'Shipping open': 'Shipping open'
+Address: Address
+Admin: Admin
+Cancel: Cancel
+Close: Close
 Competition: Competition
-Locations: Locations
-Sponsors: Sponsors
-Registrations: Registrations
+Delete: Delete
+Description: Description
+Ended: Ended
+Ends: Ends
 Entries: Entries
 Home: Home
-'Log out': 'Log out'
-'Log in': 'Log in'
-Admin: Admin
-Register: Register
-Save: Save
-'Add Location': 'Add Location'
-Address: Address
-Postcode: Postcode
-Website: Website
-Telephone: Telephone
 Image: Image
-Cancel: Cancel
-Delete: Delete
+Locations: Locations
+Name: Name
+Postcode: Postcode
+Register: Register
+Registrations: Registrations
+Save: Save
+Sponsors: Sponsors
+Started: Started
+Starts: Starts
+Telephone: Telephone
+Website: Website
+help.location.index: 'This is a list of all your locations. You can add new locations, or show / edit existing locations. Show a location to get the option to delete it..'
 help.location.show: 'This is one of your locations. You can either edit it, or delete it.'
