@@ -24,3 +24,7 @@ li.status-closed { background-color: #f2dede; border-color: #ebccd1; font-weight
 li.status-closed span { font-weight: normal; font-size: 75% }
 li.status-open { background-color: #dff0d8; border-color: #d6e9c6; font-weight: bold; }
 li.status-open span { font-weight: normal; font-size: 75% }
+
+li.list-group-item.active{
+	background-color: #e7e7e7;
+}

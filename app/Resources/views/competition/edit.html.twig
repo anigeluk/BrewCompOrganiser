@@ -1,8 +1,9 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <h1>Competition edit</h1>
-
+{% extends 'admin/index.html.twig' %}
+{% set sidebar_selected = 'competition' %}
+{% block header %}
+    <h1>{% trans %}Competition{% endtrans %}</h1>        
+{% endblock header %}
+{% block content %}
     {{ form_start(edit_form, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 9 }) }}
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.description) }}
@@ -46,7 +47,7 @@
                     {{ form_widget(edit_form.dropOffClose) }}
                     {{ form_errors(edit_form.dropOffClose) }}
                 </div>
-        </div>  {%dump%}
+        </div>
         <div class="form-group {{ edit_form.shippingOpen.vars.valid == false or edit_form.shippingClose.vars.valid == false ? 'has-error' : '' }}">
                 {{ form_label(edit_form.shippingOpen) }}
                 <div class="col-lg-4">
@@ -59,19 +60,27 @@
                     {{ form_errors(edit_form.shippingClose) }}
                 </div>
         </div>         
-        {{ form_row(edit_form.lockDown) }}
-        {{ form_row(edit_form.registrationClose) }}
+
+        <div class="form-group {{ edit_form.lockDown.vars.valid == false ? 'has-error' : '' }}">
+                {{ form_label(edit_form.lockDown) }}
+                <div class="col-lg-4">
+                    {{ form_widget(edit_form.lockDown) }}
+                    {{ form_errors(edit_form.lockDown) }}
+                </div>
+                <div class="col-lg-5">
+                </div>
+        </div>         {{ form_row(edit_form.registrationClose) }}
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.name) }}
-        <input type="submit" value="Save" />
+        <input type="submit" value="{% trans %}Save{% endtrans %}" />
     {{ form_end(edit_form) }}
     <script>
         $(document).ready(function() {
             $('.datepicker' ).datetimepicker();
         });
     </script>
-{% endblock %}
+{% endblock content%}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{  asset('css/bootstrap-datetimepicker.min.css') }}" />
 {% endblock stylesheets %}

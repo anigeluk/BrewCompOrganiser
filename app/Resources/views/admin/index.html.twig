@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% set navbar_selected = 'admin' %}
+{% set actions = block('actions') %}
+{% if sidebar_selected is not defined %}
+    {% set sidebar_selected = '' %}
+{% endif %}
+{% block sidebar %}
+    <div class="panel panel-default">
+        <div class="panel-heading">{% trans %}Admin{% endtrans %}</div>
+        <div class="list-group">
+            <li class="list-group-item {% if sidebar_selected == 'competition' %} active{% endif %}">
+                <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('pencil')}} {% trans %}Competition{% endtrans %}</a>
+            </li>
+            <li class="list-group-item {% if sidebar_selected == 'locations' %} active{% endif %}">
+                <a href="{{ path('admin_location_index',{'id':1}) }}">{{ icon('map-marker')}} {% trans %}Locations{% endtrans %}</a>
+            </li>
+            <li class="list-group-item {% if sidebar_selected == 'sponsors' %} active{% endif %}">
+                <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('gift')}} {% trans %}Sponsors{% endtrans %}</a>
+            </li>
+            <li class="list-group-item {% if sidebar_selected == 'registrations' %} active{% endif %}">
+                <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('user')}} {% trans %}Registrations{% endtrans %}</a>
+            </li>
+            <li class="list-group-item {% if sidebar_selected == 'enries' %} active{% endif %}">
+                <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('glass')}} {% trans %}Entries{% endtrans %}</a>
+            </li>
+        </div>
+    </div>
+    {% if actions is not empty %}
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans %}Actions{% endtrans %}</div>
+                <div class="list-group">
+                    {{ actions |raw }}
+                </div>
+            </div>
+    {% endif %}
+{% endblock sidebar %}
+{% block header %}
+    <h1>Admin</h1>        
+{% endblock header %}
+{% block content %}
+{% endblock content%}

@@ -1,0 +1,51 @@
+{% extends 'admin/index.html.twig' %}
+{% set sidebar_selected = 'locations' %}
+{% block header %}
+    <h1>{{location.name}}</h1>
+    <div class="actions">
+        <a class="btn btn-danger" href="{{ path('admin_location_index') }}">{% trans %}Cancel{% endtrans %}</a>
+    </div>
+{% endblock header %}
+{% block content %}
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ location.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ location.address }}</td>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <td>{{ location.postcode }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ location.website }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ location.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ location.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock content %}
+{% block actions %}
+    <li class="list-group-item">
+        {{icon('pencil')}} <a href="{{ path('admin_location_edit', { 'id': location.id }) }}">Edit</a>
+    </li>
+    <li class="list-group-item">
+        {{ form_start(delete_form) }}
+            <input type="submit" value="{% trans %}Delete{% endtrans %}">
+        {{ form_end(delete_form) }}
+    </li>
+{% endblock actions %}
+{% block help %}
+    {% trans %}help.location.show{% endtrans %}
+{% endblock help %}

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use DateTime;
 
 /**
  * Competition
@@ -114,7 +115,7 @@ class Competition
      * @var \DateTime
      * @Assert\DateTime()
      * @Assert\Expression(
-     *     "this.getEntryClose() == '' || this.getEntryOpen() <= this.getEntryClose()",
+     *     "this.getEntryClose() == null || this.getEntryOpen() < this.getEntryClose()",
      *     message="Close time must be after open time!"
      * )
      *
@@ -603,18 +604,65 @@ class Competition
         return $this->lockDown;
     }
 
-
-    public function isRegistrationOpen(){
+    /**
+     * See if now is after open date but before close date
+     * @param DateTime | null $open
+     * @param DateTime | null $close
+     * @return boolean
+     */
+    public function isWindowOpen( $open, $close){
         $now = new \DateTime;
-        if (empty($this->registrationOpen))
+        if (empty($open) || !is_a($open,'DateTime'))
             return false;
-        if ($this->registrationOpen > $now)
+        if ($open > $now)
             return false;
-        if (empty($this->registrationClose))
+        if (empty($close) || !is_a($close,'DateTime'))
             return true;
-        if ($this->registrationClose > $now)
+        if ($close > $now)
             return true ;
         return false;
+    }
+    
+    /**
+     * 
+     * @param DateTime | null $open
+     * @param DateTime | null $close
+     * @return string
+     */
+    public function getWindowAction( $open, $close){
+        $now = new \DateTime;
+        if (empty($open) || !is_a($open,'DateTime'))
+            return null;
+        if ($open > $now)
+            return 'Starts';
+        if (empty($close) || !is_a($close,'DateTime'))
+            return 'Started';
+        if ($close > $now)
+            return 'Ends' ;
+        if ($close <= $now)
+            return 'Ended' ;
+        return null;
+    }
+    
+    /**
+     * 
+     * @param DateTime | null $open
+     * @param DateTime | null $close
+     * @return DateTime
+     */
+    public function getWindowActionDate( $open, $close){
+        $now = new \DateTime;
+        if (empty($open) || !is_a($open,'DateTime'))
+            return null;
+        if ($open > $now)
+            return $open;
+        if (empty($close) || !is_a($close,'DateTime'))
+            return $open;
+        if ($close > $now)
+            return $close;
+        if ($close <= $now)
+            return $close;
+        return null;
     }
 
 

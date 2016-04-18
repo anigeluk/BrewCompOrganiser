@@ -13,27 +13,27 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav" style="margin-left:-15px">
-                <li{% if navbar_selected == 'home' %} class="active"{% endif %}><a href="{{ path('homepage') }}">Home</a></li>
+                <li{% if navbar_selected == 'home' %} class="active"{% endif %}><a href="{{ path('homepage') }}">{{icon('home')}} {% trans %}Home{% endtrans %}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if app.user %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li{% if navbar_selected == 'admin' %} class="active"{% endif %}>
-                            Admin
-                        </li>
-                    {% endif %}
                     <li class="{% if navbar_selected == 'user' %} active{% endif %}">
                         <a href="{{ path('homepage') }}">{{ app.user.username }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('fos_user_security_logout') }}">Log out</a>
+                        <a href="{{ path('fos_user_security_logout') }}">{{ icon('log-out')}} {% trans %}Log out{% endtrans %}</a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li{% if navbar_selected == 'admin' %} class="active"{% endif %}>
+                            <a href="{{ path('admin_index') }}">{{ icon('pencil')}} {% trans %}Admin{% endtrans %}</a>
+                        </li>
+                    {% endif %}
                 {% else %}
                     <li>
-                        <a href="{{ path('fos_user_registration_register') }}">Register</a>
+                        <a href="{{ path('fos_user_registration_register') }}">{{ icon('user')}} {% trans %}Register{% endtrans %}</a>
                     </li>  
                     <li>
-                        <a href="{{ path('fos_user_security_login') }}">Log in</a>
+                        <a href="{{ path('fos_user_security_login') }}">{{ icon('log-in')}} {% trans %}Log in{% endtrans %}</a>
                     </li>                    
                 {% endif %}
                 

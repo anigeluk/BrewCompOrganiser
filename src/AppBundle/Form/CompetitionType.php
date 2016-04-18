@@ -31,91 +31,91 @@ class CompetitionType extends AbstractType
             ->add('hostUrl')
             ->add('registrationOpen', DateTimeType::class , [
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('registrationClose', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('entryOpen', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('entryClose', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('dropOffOpen', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('dropOffClose', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('shippingOpen', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('shippingClose', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
             ->add('lockDown', DateTimeType::class , [
     'required' => false,
     'widget' => 'single_text',
-    'format' => 'YYYY-MM-DD HH:mm',
+    'format' => 'yyyy-MM-dd HH:mm',
     'attr' => [
         'class' => 'form-control input-inline datepicker',
         'data-provide' => 'datepicker',
-        'data-date-format' => 'YYYY-MM-DD hh:mm'
+        'data-date-format' => 'YYYY-MM-DD HH:mm'
     ]
 ])
         ;

@@ -1,38 +1,50 @@
 {% extends 'base.html.twig' %}
 {% set navbar_selected = 'home' %}
-    {% block sidebar %}
-        {% if competition.logoFilename is not empty %}
-            <div class="logo">
-                <img class="img-responsive" src="{{ vich_uploader_asset(competition, 'logoFile') }}" alt="{{ competition.name }}" />
-            </div>
-        {% endif %}
-        <div class="panel panel-default">
-            <div class="panel-heading">Competition Status</div>
-            <div class="list-group">
-                <li class="list-group-item {{ competition.isRegistrationOpen ? 'status-open' : 'status-closed'}}">
-                    Account Registration
-                    {% if competition.isRegistrationOpen == false and competition.registrationClose is not empty %}
-                        <br><span>Close{{ competition.isRegistrationOpen ? 's' : 'd' }} {{competition.registrationClose|date('Y-m-d H:i')}}</span>
-                    {% elseif competition.isRegistrationOpen == false and competition.registrationClose is not empty %}
-                        <br><span>Close{{ competition.isRegistrationOpen ? 's' : 'd' }} {{competition.registrationClose|date('Y-m-d H:i')}}</span>
-                    {% endif %}
-                </li>
-                <li class="list-group-item">Add Entries {{ icon('remove') }}</li>
-                <li class="list-group-item">Entry Drop Off {{ icon('ok') }}</li>
-                <li class="list-group-item">Entry Shipping {{ icon('ok') }}</li>
-                <li class="list-group-item">Lock Down {{ icon('ok') }}</li>
-            </div>
+{% block sidebar %}
+    {% if competition.logoFilename is not empty %}
+        <div class="logo">
+            <img class="img-responsive" src="{{ vich_uploader_asset(competition, 'logoFile') }}" alt="{{ competition.name }}" />
         </div>
-        {% block actions %}
-        {% endblock actions %}
-    {% endblock sidebar %}
-{% block content %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1>{{ competition.name }}</h1>
-                <p>{{ competition.description | nl2br }}</p>
-            </div>
+    {% endif %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Competition Status</div>
+        <div class="list-group">
+            <li class="list-group-item {{ competition.isWindowOpen(competition.registrationOpen, competition.registrationClose) ? 'status-open' : 'status-closed'}}">
+                {% trans %}Account Registration{% endtrans %}
+                {% if competition.getWindowAction(competition.registrationOpen, competition.registrationClose) is not empty %}
+                    <br><span>{{ competition.getWindowAction(competition.registrationOpen, competition.registrationClose)|trans }} {{ competition.getWindowActionDate(competition.registrationOpen, competition.registrationClose)|date('Y-m-d H:i') }}</span>
+                {% endif %}
+            </li>
+            <li class="list-group-item {{ competition.isWindowOpen(competition.entryOpen, competition.entryClose) ? 'status-open' : 'status-closed'}}">
+                {% trans %}Add Entries{% endtrans %}
+                {% if competition.getWindowAction(competition.entryOpen, competition.entryClose) is not empty %}
+                    <br><span>{{ competition.getWindowAction(competition.entryOpen, competition.entryClose)|trans }} {{ competition.getWindowActionDate(competition.entryOpen, competition.entryClose)|date('Y-m-d H:i') }}</span>
+                {% endif %}
+            </li>
+            <li class="list-group-item {{ competition.isWindowOpen(competition.dropOffOpen, competition.dropOffClose) ? 'status-open' : 'status-closed'}}">
+                {% trans %}Entry Drop Off{% endtrans %}
+                {% if competition.getWindowAction(competition.dropOffOpen, competition.dropOffClose) is not empty %}
+                    <br><span>{{ competition.getWindowAction(competition.dropOffOpen, competition.dropOffClose)|trans }} {{ competition.getWindowActionDate(competition.dropOffOpen, competition.dropOffClose)|date('Y-m-d H:i') }}</span>
+                {% endif %}
+            </li>
+            <li class="list-group-item {{ competition.isWindowOpen(competition.shippingOpen, competition.shippingClose) ? 'status-open' : 'status-closed'}}">
+                {% trans %}Entry Shipping{% endtrans %}
+                {% if competition.getWindowAction(competition.shippingOpen, competition.shippingClose) is not empty %}
+                    <br><span>{{ competition.getWindowAction(competition.shippingOpen, competition.shippingClose)|trans }} {{ competition.getWindowActionDate(competition.shippingOpen, competition.shippingClose)|date('Y-m-d H:i') }}</span>
+                {% endif %}
+            </li>
+            <li class="list-group-item {{ competition.isWindowOpen(competition.lockdown, null) ? 'status-open' : 'status-closed'}}">
+                {% trans %}Lock Down{% endtrans %}
+                {% if competition.getWindowAction(competition.lockdown, null) is not empty %}
+                    <br><span>{{ competition.getWindowAction(competition.lockdown, null )|trans }} {{ competition.getWindowActionDate(competition.lockdown, null)|date('Y-m-d H:i') }}</span>
+                {% endif %}
+            </li>
         </div>
     </div>
+{% endblock sidebar %}
+{% block header %}
+    <h1>{{ competition.name }}</h1>        
+{% endblock header %}    
+{% block content %}
+    <p>{{ competition.description | nl2br }}</p>
 {% endblock content%}

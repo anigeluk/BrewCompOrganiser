@@ -1,0 +1,49 @@
+{% extends 'admin/index.html.twig' %}
+{% set sidebar_selected = 'location' %}
+{% block header %}
+    <h1>{% trans %}Locations{% endtrans %}</h1>        
+{% endblock header %}
+{% block content %}
+    {% if locations is empty %}
+        <div class="alert alert-info">
+            {{ iconClass('warning-sign','text-danger') }} {% trans %}There are currently no locations.{% endtrans %}
+        </div>
+    {% else %}
+    <table class="table table-striped datatable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Postcode</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td><a href="{{ path('admin_location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
+                <td>{{ location.name }}</td>
+                <td>{{ location.postcode }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_location_show', { 'id': location.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_location_edit', { 'id': location.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}
+
+{% block actions %}
+    <li class="list-group-item">
+        <a href="{{ path('admin_location_new') }}">{{ icon('plus-sign')}} {% trans %}Create a new entry{% endtrans %}</a>
+    </li>
+{% endblock actions %}
