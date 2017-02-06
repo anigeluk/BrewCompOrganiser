@@ -1,6 +1,7 @@
 {% if navbar_selected is not defined %}
     {% set navbar_selected = '' %}
 {% endif %}
+{% block navbar %}
 <nav class="navbar navbar-default navbar-fixed-top screen-only" role="navigation" style="border-radius:0px">
     <div class="container">
         <div class="navbar-header">
@@ -29,14 +30,16 @@
                         </li>
                     {% endif %}
                 {% else %}
+                    {% if is_granted('ROLE_ADMIN') or ( registrationOpen is defined and registrationOpen ) %}
                     <li>
                         <a href="{{ path('fos_user_registration_register') }}">{{ icon('user')}} {% trans %}Register{% endtrans %}</a>
-                    </li>  
+                    </li>
+                    {% endif %}
                     <li>
                         <a href="{{ path('fos_user_security_login') }}">{{ icon('log-in')}} {% trans %}Log in{% endtrans %}</a>
-                    </li>                    
+                    </li>
                 {% endif %}
-                
+
 
                 {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                     <li><a style="padding:17px 5px 13px 5px" href="{{ path('default', {'_switch_user': '_exit'}) }}" title="Exit impersonation"><i class="glyphicon glyphicon-eye-close"></i></a></li>
@@ -47,3 +50,4 @@
     </div>
 </nav>
 {% include 'home/help-modal.html.twig' with {help: help|default()} %}
+{% endblock %}

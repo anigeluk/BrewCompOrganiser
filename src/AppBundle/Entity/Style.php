@@ -1,0 +1,343 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Style
+ *
+ * @ORM\Table(name="style")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StyleRepository")
+ */
+class Style
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="family", type="string", length=255)
+     */
+    private $family;
+
+    /**
+     * Grouping Name eg. Standard American Beer
+     * @var string
+     *
+     * @ORM\Column(name="grouping", type="string", length=255, nullable=true)
+     */
+    private $grouping;
+
+    /**
+     * Category eg 1, 2 etc for BJCP styles
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255, nullable=true)
+     */
+    private $category;
+
+    /**
+     * Subcategory eg A, B, C for BJCP styles
+     * @var string
+     *
+     * @ORM\Column(name="subcategory", type="string", length=255, nullable=true)
+     */
+    private $subcategory;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="require_base_style", type="boolean")
+     */
+    private $requireBaseStyle;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="require_special_ingredients", type="boolean")
+     */
+    private $requireSpecialIngredients;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active = true;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set family
+     *
+     * @param string $family
+     *
+     * @return Style
+     */
+    public function setFamily($family)
+    {
+        $this->family = $family;
+
+        return $this;
+    }
+
+    /**
+     * Get family
+     *
+     * @return string
+     */
+    public function getFamily()
+    {
+        return $this->family;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Style
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Style
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set requireBaseStyle
+     *
+     * @param boolean $requireBaseStyle
+     *
+     * @return Style
+     */
+    public function setRequireBaseStyle($requireBaseStyle)
+    {
+        $this->requireBaseStyle = $requireBaseStyle;
+
+        return $this;
+    }
+
+    /**
+     * Get requireBaseStyle
+     *
+     * @return bool
+     */
+    public function getRequireBaseStyle()
+    {
+        return $this->requireBaseStyle;
+    }
+
+    /**
+     * Set requireSpecialIngredients
+     *
+     * @param boolean $requireSpecialIngredients
+     *
+     * @return Style
+     */
+    public function setRequireSpecialIngredients($requireSpecialIngredients)
+    {
+        $this->requireSpecialIngredients = $requireSpecialIngredients;
+
+        return $this;
+    }
+
+    /**
+     * Get requireSpecialIngredients
+     *
+     * @return bool
+     */
+    public function getRequireSpecialIngredients()
+    {
+        return $this->requireSpecialIngredients;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Style
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return bool
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Style
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set subcategory
+     *
+     * @param string $subcategory
+     *
+     * @return Style
+     */
+    public function setSubcategory($subcategory)
+    {
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return string
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
+    }
+
+    /**
+     * Set group
+     *
+     * @param string $group
+     *
+     * @return Style
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return string
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set grouping
+     *
+     * @param string $grouping
+     *
+     * @return Style
+     */
+    public function setGrouping($grouping)
+    {
+        $this->grouping = $grouping;
+
+        return $this;
+    }
+
+    /**
+     * Get grouping
+     *
+     * @return string
+     */
+    public function getGrouping()
+    {
+        return $this->grouping;
+    }
+
+
+    public function getFullName()
+    {
+        $code = $this->getCategory().$this->getSubcategory();
+        if (!empty($code))
+            return $code.': '.$this->getName();
+
+        return $this->getName();
+    }
+}

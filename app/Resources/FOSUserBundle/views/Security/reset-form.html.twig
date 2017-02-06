@@ -1,0 +1,30 @@
+{#{{ src/AppBundle/Resources/views/security/reset-form.html.twig }}#}
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+{% block content %}  
+    <div id ="content-container" class="background login">                      
+        <div id="content" class="login">
+            <div id="login-first-section">
+                <div class="section-text left">
+                    <h1 class="col-md-offset-2" style="margin-bottom:15px">Set Password</h1>
+                    {% include 'AppBundle::components/flash-messages.html.twig' %}
+                    <div class="form-group">
+                        <strong>Password rules:</strong>
+                        <ul>
+                            <li>Must contain at least 1 number</li>
+                            <li>Must contain at least 1 upper case letter</li>
+                            <li>Must contain at least 1 lower case letter</li>
+                            <li>Must be at least 8 characters long</li>
+                        </ul>
+                    </div>
+                    {{ form_start(form, {'attr': {'id': 'client-login'} }) }}
+                        {{ form_errors(form) }}
+                        {{ form_widget(form.newpassword.first, {'attr': {'class': 'form-input'} }) }}
+                        {{ form_widget(form.newpassword.second, {'attr': {'class': 'form-input'} }) }}
+                        {{ form_widget(form.submit, {'attr': {'class': 'btn-dark-blue', 'style': 'font-size:1.4em'} }) }}             
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

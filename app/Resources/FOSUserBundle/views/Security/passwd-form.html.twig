@@ -1,0 +1,22 @@
+{#{{ src/AppBundle/Resources/views/security/passwd-form.html.twig }}#}
+{% extends 'base.html.twig' %}
+
+{% block content %}  
+    <div id="login-first-section">
+        <div class="section-text left">
+            <h1 style="margin-bottom:15px">Forgotten password</h1>
+            {% include 'AppBundle::components/flash-messages.html.twig' %}
+            {% if error is defined %}
+                <div class="alert alert-danger" style="width:100%">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                </div>
+            {% endif %}
+            {{ form_start(form, {'attr': {'id': 'forgotten-password'} }) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-input'} }) }}
+                {{ form_widget(form.submit, {'attr': {'class': 'btn-dark-blue', 'style': 'font-size:1.4em'} }) }}             
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,7 +1,7 @@
 {% extends 'admin/index.html.twig' %}
-{% set sidebar_selected = 'location' %}
+{% set sidebar_selected = 'locations' %}
 {% block header %}
-    <h1>{% trans %}Locations{% endtrans %}</h1>        
+    <h1>{% trans %}Locations{% endtrans %}</h1>
 {% endblock header %}
 {% block content %}
     {% if locations is empty %}
@@ -9,30 +9,33 @@
             {{ iconClass('warning-sign','text-danger') }} {% trans %}There are currently no locations.{% endtrans %}
         </div>
     {% else %}
-    <table class="table table-striped datatable">
+    <table class="table table-condensed table-striped datatable">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Postcode</th>
-                <th>Actions</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Postcode{% endtrans %}</th>
+                <th>{% trans %}Drop off{% endtrans %}</th>
+                <th>{% trans %}Shipping{% endtrans %}</th>
+                <th>{% trans %}Judging{% endtrans %}</th>
+                <th>{% trans %}Awards{% endtrans %}</th>
+                <th>{% trans %}Sponsor{% endtrans %}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for location in locations %}
             <tr>
-                <td><a href="{{ path('admin_location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
-                <td>{{ location.name }}</td>
+                <td><a href="{{ path('admin_location_show', { 'id': location.id }) }}" title="{% trans %}Show{% endtrans %}">{{ location.name }}</a></td>
                 <td>{{ location.postcode }}</td>
+                <td>{{ location.dropoff ? icon('ok')}}</td>
+                <td>{{ location.shipping ? icon('ok') }}</td>
+                <td>{{ location.judging ? icon('ok') }}</td>
+                <td>{{ location.awards ? icon('ok') }}</td>
+                <td>{{ location.sponsor ? icon('ok') }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_location_show', { 'id': location.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_location_edit', { 'id': location.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div class="button-group pull-right">
+                        <a class="btn btn-xs btn-default" href="{{ path('admin_location_edit', { 'id': location.id }) }}">{{ icon('pencil') }} {% trans %}Edit{% endtrans %}</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
@@ -47,6 +50,6 @@
 
 {% block actions %}
     <li class="list-group-item">
-        <a href="{{ path('admin_location_new') }}">{{ icon('plus-sign')}} {% trans %}Create a new entry{% endtrans %}</a>
+        <a href="{{ path('admin_location_new') }}">{{ icon('plus-sign')}} {% trans %}Add{% endtrans %}</a>
     </li>
 {% endblock actions %}

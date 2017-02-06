@@ -23,6 +23,9 @@
                     {{ form_widget(edit_form.registrationClose) }}
                     {{ form_errors(edit_form.registrationClose) }}
                 </div>
+                <div class="help-block col-lg-9 pull-right">
+                    {% trans %}competition.help.registration{% endtrans %}
+                </div>
         </div> 
         <div class="form-group {{ edit_form.entryOpen.vars.valid == false or edit_form.entryClose.vars.valid == false ? 'has-error' : '' }}">
                 {{ form_label(edit_form.entryOpen) }}
@@ -34,6 +37,9 @@
                 <div class="col-lg-4">
                     {{ form_widget(edit_form.entryClose) }}
                     {{ form_errors(edit_form.entryClose) }}
+                </div>
+                <div class="help-block col-lg-9 pull-right">
+                    {% trans %}competition.help.entry{% endtrans %}
                 </div>
         </div>  
         <div class="form-group {{ edit_form.dropOffOpen.vars.valid == false or edit_form.dropOffClose.vars.valid == false ? 'has-error' : '' }}">
@@ -47,6 +53,9 @@
                     {{ form_widget(edit_form.dropOffClose) }}
                     {{ form_errors(edit_form.dropOffClose) }}
                 </div>
+                <div class="help-block col-lg-9 pull-right">
+                    {% trans %}competition.help.dropoff{% endtrans %}
+                </div>
         </div>
         <div class="form-group {{ edit_form.shippingOpen.vars.valid == false or edit_form.shippingClose.vars.valid == false ? 'has-error' : '' }}">
                 {{ form_label(edit_form.shippingOpen) }}
@@ -59,6 +68,9 @@
                     {{ form_widget(edit_form.shippingClose) }}
                     {{ form_errors(edit_form.shippingClose) }}
                 </div>
+                <div class="help-block col-lg-9 pull-right">
+                    {% trans %}competition.help.shipping{% endtrans %}
+                </div>
         </div>         
 
         <div class="form-group {{ edit_form.lockDown.vars.valid == false ? 'has-error' : '' }}">
@@ -69,7 +81,11 @@
                 </div>
                 <div class="col-lg-5">
                 </div>
-        </div>         {{ form_row(edit_form.registrationClose) }}
+                <div class="help-block col-lg-9 pull-right">
+                    {% trans %}competition.help.lockdown{% endtrans %}
+                </div>
+        </div>         
+                    
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.name) }}

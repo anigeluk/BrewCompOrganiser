@@ -1,0 +1,41 @@
+{% extends 'admin/index.html.twig' %}
+{% set sidebar_selected = 'styles' %}
+{% block header %}
+    <h1>{% trans %}Styles{% endtrans %}</h1>
+{% endblock header %}
+{% block content %}
+    <table class="table table-condensed table-striped datatable">
+        <thead>
+            <tr>
+                <th>{% trans %}Family{% endtrans %}</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th title="{% trans %}style.help.requiredBase{% endtrans %}">{% trans %}Base{% endtrans %}</th>
+                <th title="{% trans %}style.help.requiredIngredients{% endtrans %}">{% trans %}Ingredient{% endtrans %}</th>
+                <th title="{% trans %}style.help.active{% endtrans %}">{% trans %}Active{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for style in styles %}
+            <tr>
+                <td>{{ style.family }}</td>
+                <td><a href="{{ path('admin_style_show', { 'id': style.id }) }}">{{ style.category|number_format }}{{ style.subcategory }} {{ style.name }}</a></td>
+                <td title="{% trans %}style.help.requiredBase{% endtrans %}">{% if style.requireBaseStyle %}{{icon('ok')}}{% endif %}</td>
+                <td title="{% trans %}style.help.requiredIngredients{% endtrans %}">{% if style.requireSpecialIngredients %}{{icon('ok')}}{% endif %}</td>
+                <td title="{% trans %}style.help.active{% endtrans %}">{% if style.active %}{{icon('ok')}}{% endif %}</td>
+                <td>
+                    <div class="button-group pull-right">
+                        <a class="btn btn-xs btn-default" href="{{ path('admin_style_edit', { 'id': style.id }) }}">{{ icon('pencil') }} {% trans %}Edit{% endtrans %}</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_style_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock content %}

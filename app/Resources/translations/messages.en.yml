@@ -17,6 +17,8 @@
 'Logo file': 'Logo file'
 'Registration open': 'Registration open'
 'Shipping open': 'Shipping open'
+Actions: Actions
+Add: Add
 Address: Address
 Admin: Admin
 Cancel: Cancel
@@ -24,6 +26,7 @@ Close: Close
 Competition: Competition
 Delete: Delete
 Description: Description
+Edit: Edit
 Ended: Ended
 Ends: Ends
 Entries: Entries
@@ -39,6 +42,40 @@ Sponsors: Sponsors
 Started: Started
 Starts: Starts
 Telephone: Telephone
+Update: Update
 Website: Website
 help.location.index: 'This is a list of all your locations. You can add new locations, or show / edit existing locations. Show a location to get the option to delete it..'
 help.location.show: 'This is one of your locations. You can either edit it, or delete it.'
+
+#Competition edit help text
+competition.help.registration: 'Users can register and volunteer as judges or stewards between these dates'
+competition.help.entry: 'Brewers can register entries between these dates'
+competition.help.dropoff: 'Beers can be left at drop off locations between these dates'
+competition.help.shipping: 'Beers can be shipped to the shipping locations between these dates'
+competition.help.lockdown: 'No editing or changing of entries is allowed after the Lock down date'
+
+#Locations index
+'Drop off': 'Drop off'
+Awards: Awards
+Judging: Judging
+Shipping: Shipping
+Sponsor: Sponsor
+
+
+#Location edit form
+location.form.dropoff:  'Drop off location'
+location.form.shipping: 'Shipping location'
+location.form.judging:  'Judging location'
+location.form.awards:   'Awards location'
+location.form.sponsor:  'Sponsor location'
+
+#styles
+Styles: Styles
+Family: Family
+Base: Base
+Ingredient: Ingredient
+Active: Active
+style.help.requiredBase: Is a base style required
+style.help.requiredIngredients: Is ingredient information required
+style.help.active: Is this style active
+

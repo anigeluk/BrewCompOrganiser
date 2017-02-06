@@ -22,7 +22,7 @@ class TwigExtension extends \Twig_Extension
         $this->kernel = $kernel;
         $this->router = $router;
     }
-    
+
     public function getFunctions()
     {
         return array(
@@ -96,14 +96,14 @@ class TwigExtension extends \Twig_Extension
         }
         return $val;
     }
-    
+
     public function signFilter($val, $precision=0, $options=array())
     {
         if (is_numeric($val)) {
             if ($val >= 0 ) {
                 $append = array_key_exists('append', $options) ? $options['append'] : '';
                 return '<span style="background-color:green" class="badge">'.number_format($val, $precision).$append.'</span>';
-            }       
+            }
         }
         return $val;
     }
@@ -126,7 +126,7 @@ class TwigExtension extends \Twig_Extension
 
         return '<span>' . $prepend . $top . $append . '&nbsp;/&nbsp;' . $prepend . $bottom . $append . '</span>';
     }
-    
+
     public function singleTargetHighlight($top, $bottom, $precision = 0, $options = array())
     {
         $append = array_key_exists('append', $options) ? $options['append'] : '';
@@ -207,9 +207,9 @@ class TwigExtension extends \Twig_Extension
         if (!$date2 instanceof \Datetime) {
             $date2 = new \DateTime($date2);
         }
-        
+
         $diff = $date1->diff($date2);
-        
+
         return $diff->format('%H:%I:%s');
     }
 
@@ -283,7 +283,7 @@ class TwigExtension extends \Twig_Extension
             return $default ? $default : $value;
         }
     }
-    
+
     public function htmlAttributes($attributes)
     {
         $str = '';
@@ -292,7 +292,7 @@ class TwigExtension extends \Twig_Extension
         }
         return $str;
     }
-    
+
     public function cleanFilter($string)
     {
         return preg_replace("/\W\D/i", '', $string);
@@ -316,10 +316,10 @@ class TwigExtension extends \Twig_Extension
             $x = round($x);
 
         $x = $x / $denominator;
-        
+
         return $x;
     }
-    
+
     /*
      * Take a number of seconds and turn it into days hours:minutes:seconds
      * @param type $seconds
@@ -373,7 +373,7 @@ class TwigExtension extends \Twig_Extension
 
         return $user->getName();
     }
-    
+
     public function decimalToTime($val)
     {
         // start by converting to seconds
@@ -387,7 +387,7 @@ class TwigExtension extends \Twig_Extension
         // return the time formatted HH:MM:SS
         return str_pad($hours, 1, 0, STR_PAD_LEFT).":".str_pad($minutes, 1, 0, STR_PAD_LEFT);
     }
-    
+
     public function secondsToHours($val)
     {
         $hours = floor($val / 3600);
@@ -396,11 +396,11 @@ class TwigExtension extends \Twig_Extension
 
         return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
     }
-    
+
     public function scheduleStyle($val, $shift=null)
     {
         $class = false;
-        
+
         if (! is_numeric($val)) {
             if ('TR' == $val) {
                 $class = 'cellTR';
@@ -408,7 +408,7 @@ class TwigExtension extends \Twig_Extension
                 $class = ($shift) ? 'cell'.$shift : 'cellAM';
             }
         }
-        
+
         return $class;
     }
 }

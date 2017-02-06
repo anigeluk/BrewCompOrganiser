@@ -1,0 +1,62 @@
+{% extends 'admin/index.html.twig' %}
+{% set sidebar_selected = 'styles' %}
+{% block header %}
+    <h1>{{style.getFullName}}</h1>
+    <div class="actions">
+        <a class="btn btn-warning" href="{{ path('admin_style_index') }}">{% trans %}Cancel{% endtrans %}</a>
+    </div>
+{% endblock header %}
+{% block title %}
+    {{ style.getFullName }}
+{% endblock title %}
+{% block content %}
+    <table class="table table-condensed table-striped">
+        <tbody>
+            <tr>
+                <th>Family</th>
+                <td>{{ style.family }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ style.category }}</td>
+            </tr>
+            <tr>
+                <th>Sub category</th>
+                <td>{{ style.subcategory }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ style.name }}</td>
+            </tr>
+            <tr>
+                <th>Group</th>
+                <td>{{ style.grouping }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}style.help.requiredBase{% endtrans %}</th>
+                <td>{% if style.requireBaseStyle %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Requirespecialingredients</th>
+                <td>{% if style.requireSpecialIngredients %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{% if style.active %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ form_start(delete_form) }}
+        <input type="submit" class="btn btn-danger" value="Delete">
+    {{ form_end(delete_form) }}
+
+{% endblock %}
+{% block actions %}
+    <li class="list-group-item">
+        {{icon('pencil')}} <a href="{{ path('admin_style_edit', { 'id': style.id }) }}">Edit</a>
+    </li>
+{% endblock actions %}
+{% block help %}
+    {% trans %}help.style.show{% endtrans %}
+{% endblock help %}

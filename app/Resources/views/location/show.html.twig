@@ -35,15 +35,13 @@
             </tr>
         </tbody>
     </table>
+    {{ form_start(delete_form) }}
+        <input type="submit" class="btn btn-danger" value="{% trans %}Delete{% endtrans %}">
+    {{ form_end(delete_form) }}
 {% endblock content %}
 {% block actions %}
     <li class="list-group-item">
         {{icon('pencil')}} <a href="{{ path('admin_location_edit', { 'id': location.id }) }}">Edit</a>
-    </li>
-    <li class="list-group-item">
-        {{ form_start(delete_form) }}
-            <input type="submit" value="{% trans %}Delete{% endtrans %}">
-        {{ form_end(delete_form) }}
     </li>
 {% endblock actions %}
 {% block help %}

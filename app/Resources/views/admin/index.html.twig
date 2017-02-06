@@ -11,6 +11,9 @@
             <li class="list-group-item {% if sidebar_selected == 'competition' %} active{% endif %}">
                 <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('pencil')}} {% trans %}Competition{% endtrans %}</a>
             </li>
+            <li class="list-group-item {% if sidebar_selected == 'styles' %} active{% endif %}">
+                <a href="{{ path('admin_style_index',{'id':1}) }}">{{ icon('list')}} {% trans %}Styles{% endtrans %}</a>
+            </li>
             <li class="list-group-item {% if sidebar_selected == 'locations' %} active{% endif %}">
                 <a href="{{ path('admin_location_index',{'id':1}) }}">{{ icon('map-marker')}} {% trans %}Locations{% endtrans %}</a>
             </li>
@@ -20,7 +23,7 @@
             <li class="list-group-item {% if sidebar_selected == 'registrations' %} active{% endif %}">
                 <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('user')}} {% trans %}Registrations{% endtrans %}</a>
             </li>
-            <li class="list-group-item {% if sidebar_selected == 'enries' %} active{% endif %}">
+            <li class="list-group-item {% if sidebar_selected == 'entries' %} active{% endif %}">
                 <a href="{{ path('admin_competition_edit',{'id':1}) }}">{{ icon('glass')}} {% trans %}Entries{% endtrans %}</a>
             </li>
         </div>
@@ -35,7 +38,7 @@
     {% endif %}
 {% endblock sidebar %}
 {% block header %}
-    <h1>Admin</h1>        
+    <h1>Admin</h1>
 {% endblock header %}
 {% block content %}
 {% endblock content%}

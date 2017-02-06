@@ -1,0 +1,19 @@
+{% extends 'admin/index.html.twig' %}
+{% set sidebar_selected = 'styles' %}
+{% block header %}
+    <h1>{% trans %}Edit{% endtrans %} {{ style.getFullName }}</h1>
+    <div class="actions">
+        <a class="btn btn-warning" href="{{ path('admin_style_index') }}">{% trans %}Cancel{% endtrans %}</a>
+    </div>
+{% endblock header %}
+{% block title %}
+    {% trans %}Edit{% endtrans %} {{ style.getFullName }}
+{% endblock title %}
+{% block content %}
+    <h1>Style edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" class="btn btn-success" value="{% trans %}Update{% endtrans %}" />
+    {{ form_end(edit_form) }}
+{% endblock %}
