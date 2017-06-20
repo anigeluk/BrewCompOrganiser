@@ -18,7 +18,7 @@
     </head>
     <body class="layout-default env-{{ app.environment }}">
         {% block navbar %}
-            {% include 'home/navbar.html.twig' with {help: block('help')|default()} %}
+            {% include 'home/navbar.html.twig' %}
         {% endblock navbar %}
         <div class="container" style="padding:0px">
             <div class="row">
